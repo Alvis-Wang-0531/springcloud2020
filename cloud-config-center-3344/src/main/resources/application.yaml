@@ -1,0 +1,31 @@
+server:
+  port: 3344
+
+spring:
+  application:
+    name: cloud-config-center #注册进eureka服务器的微服务名
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Alvis-Wang-0531/springcloud-config.git #使用SSL方式
+          skipSslValidation: true
+
+#          uri: git@github.com:Alvis-Wang-0531/springcloud-config.git #使用SSH方式(不可用)
+#          username: Alvis-Wang-0531
+#          password: wzh990531!!!
+#          private-key:
+
+
+          ####搜索目录
+          search-paths:
+            - springcloud-config
+      ####读取分支
+      label: master
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka
