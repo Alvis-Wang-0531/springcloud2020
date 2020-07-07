@@ -11,10 +11,10 @@ spring:
           uri: https://github.com/Alvis-Wang-0531/springcloud-config.git #使用SSL方式
           skipSslValidation: true
 
-#          uri: git@github.com:Alvis-Wang-0531/springcloud-config.git #使用SSH方式(不可用)
-#          username: Alvis-Wang-0531
-#          password: wzh990531!!!
-#          private-key:
+          #          uri: git@github.com:Alvis-Wang-0531/springcloud-config.git #使用SSH方式(不可用)
+          #          username: Alvis-Wang-0531
+          #          password: wzh990531!!!
+          #          private-key:
 
 
           ####搜索目录
@@ -23,9 +23,22 @@ spring:
       ####读取分支
       label: master
 
+  #RabbitMQ配置:5672是MQ访问的端口
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka
+
+  ##RabbitMQ相关配置,暴露bus刷新配置的端点
+management:
+  endpoints: #暴露bus刷新配置的端点
+    web:
+      exposure:
+        include: 'bus-refresh'
